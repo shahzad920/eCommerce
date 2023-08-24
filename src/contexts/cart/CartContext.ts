@@ -1,6 +1,5 @@
-
-import { useContext } from 'react';
-import { CartItem } from '../../models/cartItem';
+import {useContext} from 'react';
+import {CartItem} from '../../models/cartItem';
 import createDataContext from '../createDataContext';
 import {
   ADD_TO_CART,
@@ -10,12 +9,16 @@ import {
 } from './type';
 
 interface CartState {
-  items: { [id:number]:{ id: number;
-    price: number;
-    name: string;
-    img: string;
-    quantity: number;
-    total: number;} };
+  items: {
+    [id: number]: {
+      id: number;
+      price: number;
+      name: string;
+      img: string;
+      quantity: number;
+      total: number;
+    };
+  };
   totalAmount: number;
 }
 
@@ -63,7 +66,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         const newAmount = state.totalAmount - action.payload.price;
 
         return {
-          items: { ...state.items, [prodId]: cartItem },
+          items: {...state.items, [prodId]: cartItem},
           totalAmount: newAmount < 0 ? 0 : newAmount,
         };
       }
@@ -74,7 +77,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
     case REMOVE_FROM_CART: {
       const prodId = action.payload.id;
       if (state.items[prodId]) {
-        const updatedItems: { [key: string]: CartItem } = {};
+        const updatedItems: {[key: string]: CartItem} = {};
         const newAmount = state.totalAmount - state.items[prodId].total;
         for (let id in state.items) {
           if (id != prodId) updatedItems[id] = state.items[id];
@@ -98,30 +101,27 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 };
 
 const addToCart = (dispatch: React.Dispatch<CartAction>) => (product: any) => {
-  dispatch({ type: ADD_TO_CART, payload: product });
+  dispatch({type: ADD_TO_CART, payload: product});
 };
 
-const decreaseQuantity = (dispatch: React.Dispatch<CartAction>) => (
-  product: any
-) => {
-  dispatch({ type: DECREASE_QUANTITY, payload: product });
-};
+const decreaseQuantity =
+  (dispatch: React.Dispatch<CartAction>) => (product: any) => {
+    dispatch({type: DECREASE_QUANTITY, payload: product});
+  };
 
-const removeFromCart = (dispatch: React.Dispatch<CartAction>) => (
-  product: any
-) => {
-  dispatch({ type: REMOVE_FROM_CART, payload: product });
-};
+const removeFromCart =
+  (dispatch: React.Dispatch<CartAction>) => (product: any) => {
+    dispatch({type: REMOVE_FROM_CART, payload: product});
+  };
 
 const clearCart = (dispatch: React.Dispatch<CartAction>) => () => {
-  dispatch({ type: CLEAR_CART });
+  dispatch({type: CLEAR_CART});
 };
 
-export const { Context, Provider } = createDataContext(
+export const {Context, Provider} = createDataContext(
   cartReducer,
   initialState,
-  { addToCart, decreaseQuantity, removeFromCart, clearCart }
+  {addToCart, decreaseQuantity, removeFromCart, clearCart},
 );
 
-
-export const useCart =( ) =>useContext(Context)
+export const useCart = () => useContext(Context);

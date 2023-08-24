@@ -2,28 +2,32 @@ import React from 'react'
 import { Button, Card } from 'react-native-paper'
 import { useCart } from '../contexts/cart/CartContext'
 
-type Props = {
-    route: any
+type PropsType = {
+    route?: any
+    test?: boolean
 }
-
-export const ProductDetail = (props: Props) => {
-    const item = props.route.params.product
+export const ProductDetail = ({ route, test }: PropsType) => {
     const {
-        state: { items, totalAmount },
         addToCart,
-        clearCart,
-    } = useCart();
+    } = test ? {
+        addToCart: () => null,
+    } : useCart();
 
+
+    const item = test ? {} : route?.params.product
     return (
-        <Card style={{ flex: 1 }}>
-            <Card.Cover source={{ uri: item.img }} />
-            <Card.Title titleNumberOfLines={2} title={item.name} subtitle={`Price: $${item.price}`} />
+        <Card
+            testID='Product-Detail'
+            style={{ flex: 1 }}>
+            <Card.Cover source={{ uri: item?.img }} />
+            <Card.Title titleNumberOfLines={2} title={item?.name} subtitle={`Price: $${item.price}`} />
             <Card.Actions >
-                <Button onPress={() => {
-                    addToCart(item)
-                }} >Add To Basket</Button>
+                <Button
+                    testID='Button-Add-To-Cart'
+                    onPress={() => {
+                        addToCart(item)
+                    }} >Add To Cart</Button>
             </Card.Actions>
-
         </Card>
     )
 }

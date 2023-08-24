@@ -1,43 +1,58 @@
 import { FlatList, StyleSheet, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-native-paper';
+import axios from 'axios';
 
 type PropsType = {
-    navigation: any
+    navigation?: any
+    test?: any
 };
 
 interface ProductType {
     id: number,
     name: string
     img: string
-    price: number
+    price: number,
 }
 
-export const Products = (props: PropsType) => {
+export const Products = ({ navigation, test }: PropsType) => {
     const [Products, setProducts] = useState<ProductType[]>([]);
     useEffect(() => {
-        (async function () {
-            const response = await fetch(
-                'https://my-json-server.typicode.com/benirvingplt/products/products',
-                { method: 'GET' },
-            );
-            const result = await response.json();
-            setProducts(result);
-        })();
+        if (!test) getUserData();
     }, []);
+
+    /**
+ * Api for Product list
+ * */
+    const getUserData = () => {
+        axios({
+            method: 'GET',
+            url: 'https://my-json-server.typicode.com/benirvingplt/products/products',
+        })
+            .then((data) => {
+                setProducts(data.data);
+            })
+            .catch(e => console.warn(e));
+    };
 
     return (
         <FlatList
             numColumns={2}
+            testID='Product-List'
             data={Products}
-            renderItem={({ item }) => (
+            renderItem={({ item, index }) => (
                 <Card
+                    testID={`Product-Card:${index}`}
                     onPress={() =>
-                        props.navigation.push('ProductDetail', { product: item })
+                        navigation.push('ProductDetail', { product: item })
                     }
                     style={{ margin: 8, flex: 1 }}>
-                    <Card.Cover source={{ uri: item.img }} />
-                    <Card.Title title={item.name} subtitle={`Price: $${item.price}`} />
+                    <Card.Cover
+                        testID='Product-Image'
+                        source={{ uri: item.img }} />
+                    <Card.Title
+                        testID='Product-Title'
+                        title={item.name} subtitle={`Price: $${item.price}`} />
                 </Card>
             )}
         />

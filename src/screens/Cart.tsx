@@ -4,26 +4,31 @@ import { Button, Card } from 'react-native-paper';
 import { useCart } from '../contexts/cart/CartContext';
 
 type PropsType = {
-    navigation: any
+    navigation?: any,
+    test?: boolean
 };
 
-export const Cart = (props: PropsType) => {
+export const Cart = ({ navigation, test }: PropsType) => {
     const {
         state: { items, totalAmount },
         addToCart,
         decreaseQuantity,
         removeFromCart,
-    } = useCart();
+    } = test ? {
+        state: { items: {}, totalAmount: 0 }, addToCart: () => null,
+        decreaseQuantity: () => null,
+        removeFromCart: () => null,
+    } : useCart();
     return (
         <>
             <FlatList
-                testID={'cartList'}
+                testID={'Cart-List'}
                 data={Object.values(items)}
-                renderItem={({ item }) => (
+                renderItem={({ item }: any) => (
                     <Card
                         testID={'cardItem'}
                         onPress={() =>
-                            props.navigation.push('ProductDetail', { product: item })
+                            navigation.push('ProductDetail', { product: item })
                         }
                         style={{ margin: 8, flex: 1 }}>
                         <Card.Cover source={{ uri: item.img }} />
@@ -31,6 +36,7 @@ export const Cart = (props: PropsType) => {
                         <Card.Title title={`Quantity: ${item.quantity}`} />
                         <Card.Actions>
                             <Button
+                                testID='Button-Decrease-Quantity'
                                 onPress={() => {
                                     decreaseQuantity(item);
                                 }}>
@@ -39,12 +45,14 @@ export const Cart = (props: PropsType) => {
                             <Text>{item.quantity}</Text>
                             {/* <Card.Title title={`${item.quantity}`} /> */}
                             <Button
+                                testID='Button-Add-To-Cart'
                                 onPress={() => {
                                     addToCart(item);
                                 }}>
                                 +
                             </Button>
                             <Button
+                                testID='Button-Remove-Product'
                                 buttonColor={"red"}
                                 onPress={() => {
                                     removeFromCart(item);
@@ -55,8 +63,10 @@ export const Cart = (props: PropsType) => {
                     </Card>
                 )}
             />
-            <Card style={{ margin: 16, marginBottom: 50 }}>
-                <Card.Title title={`Total: $${Number(totalAmount).toFixed(2)}`} />
+            <Card style={{ margin: 16, marginBottom: 50 }} testID={'Card-Price'}>
+                <Card.Title
+                    testID={'Total-Price'}
+                    title={`Total: $${Number(totalAmount).toFixed(2)}`} />
             </Card>
         </>
     );
