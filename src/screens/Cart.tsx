@@ -26,7 +26,7 @@ export const Cart = ({ navigation, test }: PropsType) => {
                 data={Object.values(items)}
                 renderItem={({ item }: any) => (
                     <Card
-                        testID={'cardItem'}
+                        testID={'Card-Item'}
                         onPress={() =>
                             navigation.push('ProductDetail', { product: item })
                         }
@@ -42,7 +42,7 @@ export const Cart = ({ navigation, test }: PropsType) => {
                                 }}>
                                 -
                             </Button>
-                            <Text>{item.quantity}</Text>
+                            <Text  testID='Button-Quantity'>{item.quantity}</Text>
                             {/* <Card.Title title={`${item.quantity}`} /> */}
                             <Button
                                 testID='Button-Add-To-Cart'

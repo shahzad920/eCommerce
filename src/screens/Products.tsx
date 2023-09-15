@@ -42,7 +42,7 @@ export const Products = ({ navigation, test }: PropsType) => {
             data={Products}
             renderItem={({ item, index }) => (
                 <Card
-                    testID={`Product-Card:${index}`}
+                    testID={`Product-Card`}
                     onPress={() =>
                         navigation.push('ProductDetail', { product: item })
                     }
