@@ -1,0 +1,287 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cart Screen Renders Correctly 1`] = `
+[
+  <RCTScrollView
+    data={[]}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={[]}
+    testID="Cart-List"
+    viewabilityConfigCallbackPairs={[]}
+  >
+    <View />
+  </RCTScrollView>,
+  <View
+    collapsable={false}
+    style={
+      {
+        "backgroundColor": "rgba(247, 243, 249, 1)",
+        "borderRadius": 12,
+        "margin": 16,
+        "marginBottom": 50,
+        "shadowColor": "#000",
+        "shadowOffset": {
+          "height": 1,
+          "width": 0,
+        },
+        "shadowOpacity": 0.15,
+        "shadowRadius": 3,
+      }
+    }
+    testID="Card-Price-container-outer-layer"
+  >
+    <View
+      collapsable={false}
+      style={
+        {
+          "backgroundColor": "rgba(247, 243, 249, 1)",
+          "borderRadius": 12,
+          "elevation": 1,
+          "flex": undefined,
+          "shadowColor": "#000",
+          "shadowOffset": {
+            "height": 1,
+            "width": 0,
+          },
+          "shadowOpacity": 0.3,
+          "shadowRadius": 1,
+        }
+      }
+      testID="Card-Price-container"
+    >
+      <View
+        style={
+          [
+            {
+              "flexShrink": 1,
+            },
+            undefined,
+          ]
+        }
+        testID="Card-Price"
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "paddingLeft": 16,
+              },
+              {
+                "minHeight": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flex": 1,
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "textAlign": "left",
+                  },
+                  {
+                    "color": "rgba(28, 27, 31, 1)",
+                    "writingDirection": "ltr",
+                  },
+                  [
+                    {
+                      "fontFamily": "System",
+                      "fontSize": 16,
+                      "fontWeight": "400",
+                      "letterSpacing": 0.15,
+                      "lineHeight": 24,
+                    },
+                    [
+                      {
+                        "minHeight": 30,
+                        "paddingRight": 16,
+                      },
+                      {
+                        "marginBottom": 2,
+                      },
+                      undefined,
+                    ],
+                  ],
+                ]
+              }
+            >
+              Total: $NaN
+            </Text>
+          </View>
+          <View />
+        </View>
+      </View>
+    </View>
+  </View>,
+]
+`;
+
+exports[`renders correctly 1`] = `
+[
+  <RCTScrollView
+    data={[]}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={[]}
+    testID="Cart-List"
+    viewabilityConfigCallbackPairs={[]}
+  >
+    <View />
+  </RCTScrollView>,
+  <View
+    collapsable={false}
+    style={
+      {
+        "backgroundColor": "rgba(247, 243, 249, 1)",
+        "borderRadius": 12,
+        "margin": 16,
+        "marginBottom": 50,
+        "shadowColor": "#000",
+        "shadowOffset": {
+          "height": 1,
+          "width": 0,
+        },
+        "shadowOpacity": 0.15,
+        "shadowRadius": 3,
+      }
+    }
+    testID="Card-Price-container-outer-layer"
+  >
+    <View
+      collapsable={false}
+      style={
+        {
+          "backgroundColor": "rgba(247, 243, 249, 1)",
+          "borderRadius": 12,
+          "elevation": 1,
+          "flex": undefined,
+          "shadowColor": "#000",
+          "shadowOffset": {
+            "height": 1,
+            "width": 0,
+          },
+          "shadowOpacity": 0.3,
+          "shadowRadius": 1,
+        }
+      }
+      testID="Card-Price-container"
+    >
+      <View
+        style={
+          [
+            {
+              "flexShrink": 1,
+            },
+            undefined,
+          ]
+        }
+        testID="Card-Price"
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "paddingLeft": 16,
+              },
+              {
+                "minHeight": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flex": 1,
+                  "flexDirection": "column",
+                  "justifyContent": "center",
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "textAlign": "left",
+                  },
+                  {
+                    "color": "rgba(28, 27, 31, 1)",
+                    "writingDirection": "ltr",
+                  },
+                  [
+                    {
+                      "fontFamily": "System",
+                      "fontSize": 16,
+                      "fontWeight": "400",
+                      "letterSpacing": 0.15,
+                      "lineHeight": 24,
+                    },
+                    [
+                      {
+                        "minHeight": 30,
+                        "paddingRight": 16,
+                      },
+                      {
+                        "marginBottom": 2,
+                      },
+                      undefined,
+                    ],
+                  ],
+                ]
+              }
+            >
+              Total: $NaN
+            </Text>
+          </View>
+          <View />
+        </View>
+      </View>
+    </View>
+  </View>,
+]
+`;

@@ -8,22 +8,14 @@ type PropsType = {
     test?: boolean
 };
 
-export const Cart = ({ navigation, test }: PropsType) => {
-    const {
-        state: { items, totalAmount },
-        addToCart,
-        decreaseQuantity,
-        removeFromCart,
-    } = test ? {
-        state: { items: {}, totalAmount: 0 }, addToCart: () => null,
-        decreaseQuantity: () => null,
-        removeFromCart: () => null,
-    } : useCart();
+export const Cart = ({ navigation,test }: PropsType) => {
+    const cart = test?{state:{items:[]}}: useCart();
+    
     return (
         <>
             <FlatList
                 testID={'Cart-List'}
-                data={Object.values(items)}
+                data={Object.values(cart.state.items)}
                 renderItem={({ item }: any) => (
                     <Card
                         testID={'Card-Item'}
@@ -38,7 +30,7 @@ export const Cart = ({ navigation, test }: PropsType) => {
                             <Button
                                 testID='Button-Decrease-Quantity'
                                 onPress={() => {
-                                    decreaseQuantity(item);
+                                    cart.decreaseQuantity(item);
                                 }}>
                                 -
                             </Button>
@@ -47,7 +39,7 @@ export const Cart = ({ navigation, test }: PropsType) => {
                             <Button
                                 testID='Button-Add-To-Cart'
                                 onPress={() => {
-                                    addToCart(item);
+                                    cart.addToCart(item);
                                 }}>
                                 +
                             </Button>
@@ -55,7 +47,7 @@ export const Cart = ({ navigation, test }: PropsType) => {
                                 testID='Button-Remove-Product'
                                 buttonColor={"red"}
                                 onPress={() => {
-                                    removeFromCart(item);
+                                    cart.removeFromCart(item);
                                 }}>
                                 X
                             </Button>
@@ -66,7 +58,7 @@ export const Cart = ({ navigation, test }: PropsType) => {
             <Card style={{ margin: 16, marginBottom: 50 }} testID={'Card-Price'}>
                 <Card.Title
                     testID={'Total-Price'}
-                    title={`Total: $${Number(totalAmount).toFixed(2)}`} />
+                    title={`Total: $${Number(cart.state.totalAmount).toFixed(2)}`} />
             </Card>
         </>
     );

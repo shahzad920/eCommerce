@@ -3,10 +3,6 @@ describe('Example', () => {
     await device.launchApp();
   });
 
-  // beforeEach(async () => {
-  //   await device.reloadReactNative();
-  // });
-
   it('should have Product-List', async () => {
     await expect(element(by.id('Product-List'))).toBeVisible();
   });

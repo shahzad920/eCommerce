@@ -6,26 +6,21 @@ type PropsType = {
     route?: any
     test?: boolean
 }
-export const ProductDetail = ({ route, test }: PropsType) => {
-    const {
-        addToCart,
-    } = test ? {
-        addToCart: () => null,
-    } : useCart();
+export const ProductDetail = ({ route }: PropsType) => {
+    const cart = useCart();
 
-
-    const item = test ? {} : route?.params.product
+    const item = route.params.product
     return (
         <Card
             testID='Product-Detail'
             style={{ flex: 1 }}>
-            <Card.Cover source={{ uri: item?.img }} />
-            <Card.Title titleNumberOfLines={2} title={item?.name} subtitle={`Price: $${item.price}`} />
+            <Card.Cover source={{ uri: item.img }} />
+            <Card.Title titleNumberOfLines={2} title={item.name} subtitle={`Price: $${item.price}`} />
             <Card.Actions >
                 <Button
                     testID='Button-Add-To-Cart'
                     onPress={() => {
-                        addToCart(item)
+                        cart.addToCart(item)
                     }} >Add To Cart</Button>
             </Card.Actions>
         </Card>
